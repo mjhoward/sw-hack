@@ -1,11 +1,15 @@
 this.addEventListener('install', function(event) {
   console.log('Install event');
+  var baseUrl = '/mjhoward/sw-hack/master/';
+  var localhost = '/';
+
+
   event.waitUntil(
     caches.open('v1')
       .then(function(cache) {
         return cache.addAll([
-          '/mjhoward/sw-hack/master/',
-          '/mjhoward/sw-hack/master/index.html'
+          baseUrl,
+          baseUrl + 'index.html'
         ]);
       })
       .then(function() {
@@ -18,46 +22,29 @@ this.addEventListener('install', function(event) {
 });
 
 this.addEventListener('fetch', function(event) {
-  console.log('Fetch event:', event.request.url);
-  var response;
-  event.respondWith(caches.match(event.request).catch(function() {
-    console.log('Not found in cache:');
-    return fetch(event.request);
-  }).then(function(r) {
-        repsonse = r;
-        caches.open('v1').then(function(cache) {
-          cache.put(event.request, response);
+  var url = event.request.url;
+  var matcher = url.match(/http:\/\/.*\/(.*)/);
+  var path = matcher[1];
+  return fetch(event.request).then(function(r) {
+    return r;
+  }).then(function(data) {
+    event.waitUntil(
+      caches.open('v1')
+        .then(function(cache) {
+          return cache.add(path);
         })
-        console.log('Found in cache:', r);
-        return repsonse.clone();        
-      })
-  );
-  /*event.respondWith(
-    caches.match(event.request).catch(function() {
-      console.log('Not in cache');
-      return fetch(event.request).then(function(response) {
-        console.log('response: ',response);
-        return caches.open('v1').then(function(cache) {
-          cache.put(event.request, response.clone());
-          return response;
+        .then(function() {
+          console.log('All URLs cached');
         })
-      })
-    })
-  );*/
+        .catch(function(error) {
+          console.log('Cache failed:', error);
+        })
+    );
+  }).catch(function() {
+    event.respondWith(caches.match(event.request)).then(function(repsonse) {
+      return caches.open('v1').then(function(cache) {
+        return cache.match(path);
+      });
+    });
+  });
 });
-
-/*self.addEventListener("activate", function (event) {
-  event.waitUntil(
-    clients.claim().then(
-      caches
-        .keys()
-        .then(function (cacheNames) {
-          return Promise.all(
-            cacheNames.map(function (cacheName) {
-                return caches.delete(cacheName);
-            })
-          );
-        })
-    )
-  )
-});*/
