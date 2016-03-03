@@ -37,7 +37,7 @@ this.addEventListener('fetch', function(event) {
             return response;
           }).then(function(data) {
               caches.open('v1').then(function(cache) {
-                console.log('cache opend');
+                console.log('cache opend', cache.match(path));
                 event.respondWith(cache.match(path));
               })
           });
