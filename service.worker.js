@@ -36,13 +36,12 @@ this.addEventListener('fetch', function(event) {
     caches.match(event.request).then(function(response) {
       console.log('match', response);
       return response;
-    })
-    // .then(function(data) {
-    //   console.log('data', data)
-    //   if (!network) {
-    //      return cache.match(path);
-    //   }
-    // });
+    }).then(function(data) {
+      console.log('data', data)
+      if (!network) {
+         return cache.match(path);
+      }
+    });
   })
 });
 
