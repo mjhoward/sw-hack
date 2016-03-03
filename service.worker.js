@@ -29,7 +29,7 @@ this.addEventListener('fetch', function(event) {
         fetch(event.request).then(function(r) {
           //network
           console.log('then after fetch', r);
-          return r;
+          //return r;
         }).catch(function(err) {
           event.respondWith(
               caches.open('v1').then(function(cache) {
