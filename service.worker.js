@@ -35,7 +35,7 @@ this.addEventListener('fetch', function(event) {
     console.log('catching network error', err)
     caches.match(path).then(function(repsonse) {
       console.log('match', path);
-      //return response
+      return response;
     })
     // .then(function(data) {
     //   if (!network) {
