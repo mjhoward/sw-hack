@@ -8,8 +8,8 @@ this.addEventListener('install', function(event) {
     caches.open('v1')
       .then(function(cache) {
         return cache.addAll([
-          localhost,
-          localhost + 'index.html'
+          baseUrl,
+          baseUrl + 'index.html'
         ]);
       })
       .then(function() {
@@ -24,29 +24,16 @@ this.addEventListener('install', function(event) {
 var network = false;
 
 this.addEventListener('fetch', function(event) {
-    event.respondWith(
-      fetch(event.request).catch(function() {
-        return caches.match(event.request);
-      })
-    )
-});
-
-
-
-
-
-
-
-  // var url = event.request.url;
-  // var matcher = url.match(/https:\/\/.*\/(.*)/);
-  // var path = matcher[1];
-  // fetch(event.request).then(function(r) {
-  //   console.log('then after fetch', r);
-  //   network = true;
-  //   return r;
-  // })
-
-
+  var url = event.request.url;
+  var matcher = url.match(/https?:\/\/.*\/(.*)/);
+  var path = matcher[1];
+  fetch(event.request).then(function(r) {
+    console.log('then after fetch', r);
+    network = true;
+    return r;
+  }).catch(function(err) {
+    console.log('catching network error', error)
+  })
 
 
   // .then(function(data) {
