@@ -46,14 +46,17 @@ this.addEventListener('fetch', function(event) {
           console.log('Cache failed:', error);
         })
     );
-  }).catch(function() {
-    console.log('catching')
-    event.respondWith(caches.match(event.request)).then(function(repsonse) {
+  });
+
+  if (!network) {
+      event.respondWith(caches.match(event.request)).then(function(repsonse) {
       console.log('responding', repsonse)
       return caches.open('v1').then(function(cache) {
         console.log('last cache')
         return cache.match(path);
-      });
+      }).catch(function(error) {
+          console.log('from cache failed', error);
+        });
     });
-  });
+  }
 });
