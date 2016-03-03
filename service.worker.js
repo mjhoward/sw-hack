@@ -26,22 +26,19 @@ this.addEventListener('fetch', function(event) {
   var matcher = url.match(/https?:\/\/.*\/(.*)/);
   var path = matcher[1];
   event.respondWith(
-        fetch(event.request).then(function(r) {
-          //network
-          console.log('then after fetch', r);
-          return r;
-        }).catch(function(err) {
-          console.log('catching network error', err)
-          caches.match(event.request).then(function(response) {
-            console.log('match', response);
-            return response;
-          }).then(function(data) {
-              return caches.open('v1').then(function(cache) {
-                console.log('cache opend');
-                return cache.match(path);
-              })
-          });
-        })
+        fetch(event.request)
+          .catch(function(err) {
+            return caches.open('v1').then(function(cache) {
+                  console.log('cache opend');
+                  return cache.match(path);
+                })
+            })
+        // .then(function(data) {
+        //       // caches.open('v1').then(function(cache) {
+        //       //   console.log('cache opend');
+        //       //   //return cache.match(path);
+        //       // })
+        //   });
     )
 });
 
