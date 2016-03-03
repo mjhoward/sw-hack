@@ -26,6 +26,9 @@ var network = false;
 this.addEventListener('fetch', function(event) {
     event.respondWith(
       fetch(event.request).catch(function() {
+          
+        console.log('return from cache');
+
         return caches.match(event.request);
       })
     )
