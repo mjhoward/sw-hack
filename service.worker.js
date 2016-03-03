@@ -26,7 +26,9 @@ this.addEventListener('fetch', function(event) {
   // var matcher = url.match(/https?:\/\/.*\/(.*)/);
   // var path = matcher[1];
   event.respondWith(
-        fetch(event.request).catch(function() {
+        fetch(event.request).then(function(){
+          console.log('Hello');
+        }).catch(function() {
              return caches.match(event.request);
       })
     )
