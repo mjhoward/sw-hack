@@ -34,14 +34,14 @@ this.addEventListener('fetch', function(event) {
   }).catch(function(err) {
     console.log('catching network error', err)
     caches.match(path).then(function(repsonse) {
-      console.log('match', path);
+      console.log('match', response);
       return response;
-    })
-    // .then(function(data) {
-    //   if (!network) {
-    //      return cache.match(path);
-    //   }
-    // });
+    }).then(function(data) {
+      console.log('data', data)
+      if (!network) {
+         return cache.match(path);
+      }
+    });
   })
 });
 
