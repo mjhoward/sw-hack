@@ -8,8 +8,8 @@ this.addEventListener('install', function(event) {
     caches.open('v1')
       .then(function(cache) {
         return cache.addAll([
-          localhost,
-          localhost + 'index.html'
+          baseUrl,
+          baseUrl + 'index.html'
         ]);
       })
       .then(function() {
