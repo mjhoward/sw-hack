@@ -21,19 +21,15 @@ this.addEventListener('install', function(event) {
   );
 });
 
-var network = false;
-
 this.addEventListener('fetch', function(event) {
-  var url = event.request.url;
-  var matcher = url.match(/https?:\/\/.*\/(.*)/);
-  var path = matcher[1];
-  fetch(event.request).then(function(r) {
-    console.log('then after fetch', r);
-    network = true;
-    return r;
-  }).catch(function(err) {
-    console.log('catching network error', err)
-  })
+  // var url = event.request.url;
+  // var matcher = url.match(/https?:\/\/.*\/(.*)/);
+  // var path = matcher[1];
+  event.respondWith(
+        fetch(event.request).catch(function() {
+             return caches.match(event.request);
+      })
+    )
 });
 
 
