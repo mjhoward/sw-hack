@@ -27,7 +27,7 @@ this.addEventListener('fetch', function(event) {
   var url = event.request.url;
   var matcher = url.match(/https:\/\/.*\/(.*)/);
   var path = matcher[1];
-  return fetch(event.request).then(function(r) {
+  fetch(event.request).then(function(r) {
     console.log('then after fetch', r);
     network = true;
     return r;
