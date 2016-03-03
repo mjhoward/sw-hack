@@ -21,28 +21,28 @@ this.addEventListener('install', function(event) {
   );
 });
 
-var network = false;
-
 this.addEventListener('fetch', function(event) {
   var url = event.request.url;
   var matcher = url.match(/https?:\/\/.*\/(.*)/);
   var path = matcher[1];
-  fetch(event.request).then(function(r) {
-    console.log('then after fetch', r);
-    network = true;
-    return r;
-  }).catch(function(err) {
-    console.log('catching network error', err)
-    caches.match(event.request).then(function(response) {
-      console.log('match', response);
-      return response;
-    }).then(function(data) {
-      console.log('data', data)
-      if (!network) {
-         return cache.match(path);
-      }
-    });
-  })
+  event.respondWith(
+        fetch(event.request).then(function(r) {
+          //network
+          console.log('then after fetch', r);
+          return r;
+        }).catch(function(err) {
+          console.log('catching network error', err)
+          caches.match(event.request).then(function(response) {
+            console.log('match', response);
+            return response;
+          }).then(function(data) {
+              return caches.open('v1').then(function(cache) {
+                console.log('cache opend');
+                return cache.match(path);
+              })
+          });
+        })
+    )
 });
 
 
