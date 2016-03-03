@@ -31,8 +31,8 @@ this.addEventListener('fetch', function(event) {
           console.log('then after fetch', r);
           //return r;
         }).catch(function(err) {
-          event.respondWith(
-              caches.open('v1').then(function(cache) {
+          //event.respondWith(
+             return caches.open('v1').then(function(cache) {
                   return cache.match(path);
                 })
             // caches.match(event.request).then(function(response) {
@@ -47,7 +47,7 @@ this.addEventListener('fetch', function(event) {
             // }));
           //catch
         //}
-        )
+        //)
         });
     //)
 });
