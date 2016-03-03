@@ -34,6 +34,7 @@ this.addEventListener('fetch', function(event) {
   }).catch(function(err) {
     console.log('catching network error', error)
   })
+});
 
 
   // .then(function(data) {
