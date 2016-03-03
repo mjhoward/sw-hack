@@ -25,16 +25,14 @@ this.addEventListener('fetch', function(event) {
   var url = event.request.url;
   var matcher = url.match(/https?:\/\/.*\/(.*)/);
   var path = matcher[1];
-  //event.respondWith(
+  event.respondWith(
         fetch(event.request).then(function(r) {
           //network
           console.log('then after fetch', r);
           //return r;
         }).catch(function(err) {
           //event.respondWith(
-             return caches.open('v1').then(function(cache) {
-                  return cache.match(path);
-                })
+             return caches.match(event.request);
             // caches.match(event.request).then(function(response) {
             //   console.log('match', response);
             //   return response;
@@ -48,8 +46,8 @@ this.addEventListener('fetch', function(event) {
           //catch
         //}
         //)
-        });
-    //)
+      })
+    )
 });
 
 
