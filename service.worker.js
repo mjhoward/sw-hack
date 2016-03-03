@@ -22,30 +22,12 @@ this.addEventListener('install', function(event) {
 });
 
 this.addEventListener('fetch', function(event) {
-  var url = event.request.url;
-  var matcher = url.match(/https?:\/\/.*\/(.*)/);
-  var path = matcher[1];
+  // var url = event.request.url;
+  // var matcher = url.match(/https?:\/\/.*\/(.*)/);
+  // var path = matcher[1];
   event.respondWith(
-        fetch(event.request).then(function(r) {
-          //network
-          console.log('then after fetch', r);
-          //return r;
-        }).catch(function(err) {
-          //event.respondWith(
+        fetch(event.request).catch(function() {
              return caches.match(event.request);
-            // caches.match(event.request).then(function(response) {
-            //   console.log('match', response);
-            //   return response;
-            // })
-            // .then(function(data) {
-            //     caches.open('v1').then(function(cache) {
-            //       console.log('cache opend', cache.match(path));
-            //       return cache.match(path);
-            //     })
-            // }));
-          //catch
-        //}
-        //)
       })
     )
 });
