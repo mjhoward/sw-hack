@@ -31,17 +31,24 @@ this.addEventListener('fetch', function(event) {
           console.log('then after fetch', r);
           return r;
         }).catch(function(err) {
-          console.log('catching network error', err)
-          caches.match(event.request).then(function(response) {
-            console.log('match', response);
-            return response;
-          }).then(function(data) {
-              caches.open('v1').then(function(cache) {
-                console.log('cache opend', cache.match(path));
-                //event.respondWith(cache.match(path));
-              })
-          });
-        })
+          event.respondWith(
+            caches.open('v1').then(function(cache) {
+                  console.log('cache opend', cache.match(path));
+                  return cache.match(path);
+                })
+            // caches.match(event.request).then(function(response) {
+            //   console.log('match', response);
+            //   return response;
+            // })
+            // .then(function(data) {
+            //     caches.open('v1').then(function(cache) {
+            //       console.log('cache opend', cache.match(path));
+            //       return cache.match(path);
+            //     })
+            // }));
+          //catch
+        //}
+        )
     //)
 });
 
