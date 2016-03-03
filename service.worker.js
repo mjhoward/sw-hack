@@ -32,7 +32,7 @@ this.addEventListener('fetch', function(event) {
     network = true;
     return r;
   }).catch(function(err) {
-    //console.log('catching network error', error)
+    console.log('catching network error', error)
   })
 });
 
