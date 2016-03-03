@@ -5,10 +5,7 @@ this.addEventListener('install', function(event) {
       .then(function(cache) {
         return cache.addAll([
           '/',
-          '/index.html',
-          '/application/static/css/wol-footer.css',
-          '/application/static/css/cochrane-common.css',
-          '/application/static/images/Cochrane_Logo.png'
+          '/index.html'
         ]);
       })
       .then(function() {
