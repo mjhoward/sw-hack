@@ -33,15 +33,16 @@ this.addEventListener('fetch', function(event) {
     return r;
   }).catch(function(err) {
     console.log('catching network error', err)
-    caches.match(path).then(function(repsonse) {
+    caches.match(path).then(function(response) {
       console.log('match', response);
       return response;
-    }).then(function(data) {
-      console.log('data', data)
-      if (!network) {
-         return cache.match(path);
-      }
-    });
+    })
+    // .then(function(data) {
+    //   console.log('data', data)
+    //   if (!network) {
+    //      return cache.match(path);
+    //   }
+    // });
   })
 });
 
