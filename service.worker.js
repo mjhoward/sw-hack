@@ -30,7 +30,8 @@ this.addEventListener('fetch', function(event) {
   // Network, then cache, then fallback for home page
   if(requestURL=='/')  {
     event.respondWith(
-      fetch(event.request).then(function() {
+      fetch(event.request).then(function(r) {
+        console.log(r)
         return caches.match(event.request);
       }).catch(function() {
         return caches.match('/page/content-not-available-offline');
