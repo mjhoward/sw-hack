@@ -166,7 +166,7 @@
     
     Modernizr.load([
         {
-            load    : 'http://onlinelibrary.wiley.com:80/enhanced/static/common/js/vendor/wiley-require-2.1.6.js',
+            load    : 'assets/wiley-require-2.1.6.js',
             callback: function() {
 
                 
@@ -174,8 +174,8 @@
                     if ( typeof WILEY !== 'undefined' && WILEY.requirejs ) {
 
                         WILEY.requirejs([
-                                'http://onlinelibrary.wiley.com:80/enhanced/static/common/js/wiley-common.js?version=1.11.1',
-                                'http://onlinelibrary.wiley.com:80/enhanced/static/js/wiley-article.js?version=1.11.1'
+                                'assets/wiley-common.js',
+                                'assets/wiley-article.js'
                             ], function() {
                             WILEY.requirejs([
                                 'common/modules/main',

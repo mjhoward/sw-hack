@@ -2,15 +2,15 @@ function addAllFiles() {
   var isLocal = true;
   var baseUrl = isLocal ? '/' : '/mjhoward/sw-hack/master/';
 
-  var arr = [baseUrl]
+  var arr = [baseUrl, '/index.html']
 
-  for (var i = 1; i < 19; i ++) {
-    (function(idx) {
-      var offset = (idx < 10) ? 0 : ''
-      var url =  baseUrl + 'assets/equation-neqn0' + offset + idx + '.gif'
-      arr.push(url)
-    })(i);
-  }
+  // for (var i = 1; i < 19; i ++) {
+  //   (function(idx) {
+  //     var offset = (idx < 10) ? 0 : ''
+  //     var url =  baseUrl + 'assets/equation-neqn0' + offset + idx + '.gif'
+  //     arr.push(url)
+  //   })(i);
+  // }
 
   for (var i = 1; i < 6; i ++) {
     (function(idx) {
@@ -19,20 +19,20 @@ function addAllFiles() {
     })(i);
   }
 
-  for (var i = 1; i < 19; i ++) {
-    (function(idx) {
-      var offset = (idx < 10) ? 0 : ''
-      var url =  baseUrl + 'assets/equation-nueq0' + offset + idx + '.gif'
-      arr.push(url)
-    })(i);
-  }
+  // for (var i = 1; i < 19; i ++) {
+  //   (function(idx) {
+  //     var offset = (idx < 10) ? 0 : ''
+  //     var url =  baseUrl + 'assets/equation-nueq0' + offset + idx + '.gif'
+  //     arr.push(url)
+  //   })(i);
+  // }
 
-  for (var i = 1; i < 51; i ++) {
-    (function(idx) {
-      var url =  baseUrl + 'assets/equation-tex2gif-stack-' + idx + '.gif'
-      arr.push(url)
-    })(i);
-  }
+  // for (var i = 1; i < 51; i ++) {
+  //   (function(idx) {
+  //     var url =  baseUrl + 'assets/equation-tex2gif-stack-' + idx + '.gif'
+  //     arr.push(url)
+  //   })(i);
+  // }
 
   arr.push(baseUrl + 'assets/footer-logo.png');
   arr.push(baseUrl + 'assets/header-logo.png');
@@ -48,8 +48,9 @@ function addAllFiles() {
   arr.push(baseUrl + 'assets/wiley-article.js');
   arr.push(baseUrl + 'assets/wiley-common.js');
   arr.push(baseUrl + 'assets/wiley-require-2.1.6.js');
+  arr.push(baseUrl + 'assets/modernizr.custom.js');
 
-  arr.push(baseUrl + 'assets/fonts/open-sans.css');
+  arr.push(baseUrl + 'assets/open-sans.css');
   arr.push(baseUrl + 'assets/fonts/Italic/OpenSans-Italic.woff2');
   arr.push(baseUrl + 'assets/fonts/Regular/OpenSans-Regular.woff2');
   arr.push(baseUrl + 'assets/fonts/Semibold/OpenSans-Semibold.woff2');
