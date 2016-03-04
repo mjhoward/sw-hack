@@ -123,7 +123,23 @@
             googletag.pubads ().enableSingleRequest ();
             googletag.enableServices ();
         });
-    </script> <script src="assets/pubads_impl_81.js" async=""></script><script src="assets/s-code-contents-3b1a3a02a826d40872235191077371a43436c663.js"></script><script src="assets/satellite-56157d88613231001700092a.js"></script><script type="text/javascript" src="assets/osd.js"></script><script async="" type="text/javascript" src="assets/wiley_epdf_linker-40d90312c0b37af783a0716561797875.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="http://onlinelibrary.wiley.com:80/enhanced/static/common/js/wiley-common.js?version=1.11.1" src="assets/wiley-common.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="http://onlinelibrary.wiley.com:80/enhanced/static/js/wiley-article.js?version=1.11.1" src="assets/wiley-article.js"></script></head> <body data-type="default" class="text">                <script>
+    </script> <script src="assets/pubads_impl_81.js" async=""></script><script src="assets/s-code-contents-3b1a3a02a826d40872235191077371a43436c663.js"></script><script src="assets/satellite-56157d88613231001700092a.js"></script><script type="text/javascript" src="assets/osd.js"></script><script async="" type="text/javascript" src="assets/wiley_epdf_linker-40d90312c0b37af783a0716561797875.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="http://onlinelibrary.wiley.com:80/enhanced/static/common/js/wiley-common.js?version=1.11.1" src="assets/wiley-common.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="http://onlinelibrary.wiley.com:80/enhanced/static/js/wiley-article.js?version=1.11.1" src="assets/wiley-article.js"></script>
+
+    <script>
+        if (navigator.serviceWorker) {
+            console.log('SW available');
+            navigator.serviceWorker.register('service.worker.js').then(function(reg) {
+                console.log('Service worker registered:', reg);
+            }).catch(function(err) {
+                console.log('Service worker registration failed:', err);
+            });
+        } else {
+            console.log('Service worker not supported');
+        }
+    </script>
+
+
+    </head> <body data-type="default" class="text">                <script>
     var dataLayer = window.dataLayer ? dataLayer : {};
     dataLayer.pageType = 'FULLTEXT';
     dataLayer.contentAvailability = 'PDF and HTML';
