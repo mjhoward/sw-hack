@@ -1,6 +1,6 @@
 this.addEventListener('install', function(event) {
   console.log('Install event');
-  var baseUrl = '/mjhoward/sw-hack/master/';
+  var baseUrl = '/mjhoward/sw-hack/';
   var localhost = '/';
 
 
