@@ -25,11 +25,18 @@ this.addEventListener('fetch', function(event) {
   // var url = event.request.url;
   // var matcher = url.match(/https?:\/\/.*\/(.*)/);
   // var path = matcher[1];
-  //event.respondWith(
-        fetch(event.request).catch(function() {
-             return caches.match(event.request);
+   var requestURL = new URL(event.request.url);
+
+  // Network, then cache, then fallback for home page
+  if(requestURL=='/')  {
+    event.respondWith(
+      fetch(event.request).then(function() {
+        return caches.match(event.request);
+      }).catch(function() {
+        return caches.match('/page/content-not-available-offline');
       })
-    //)
+    );
+  }
 });
 
 
