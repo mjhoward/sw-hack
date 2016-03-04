@@ -14,7 +14,7 @@ function addAllFiles() {
 
   for (var i = 1; i < 6; i ++) {
     (function(idx) {
-      var url =  baseUrl + 'figures/nfig00' + + idx + '.jpg'
+      var url =  baseUrl + 'figures/nfig00' + idx + '.jpg'
       arr.push(url)
     })(i);
   }
@@ -40,6 +40,19 @@ function addAllFiles() {
   arr.push(baseUrl + 'assets/wol-common.css');
   arr.push(baseUrl + 'assets/cover.gif');
   arr.push(baseUrl + 'assets/olalertbanner.jpg');
+  arr.push(baseUrl + 'assets/images/ajax-loader.gif');
+  arr.push(baseUrl + 'assets/images/icons-aa.png');
+  arr.push(baseUrl + 'assets/images/icons.png');
+
+
+  arr.push(baseUrl + 'assets/wiley-article.js');
+  arr.push(baseUrl + 'assets/wiley-common.js');
+  arr.push(baseUrl + 'assets/wiley-require-2.1.6.js');
+
+  arr.push(baseUrl + 'assets/fonts/open-sans.css');
+  arr.push(baseUrl + 'assets/fonts/Italic/OpenSans-Italic.woff2');
+  arr.push(baseUrl + 'assets/fonts/Regular/OpenSans-Regular.woff2');
+  arr.push(baseUrl + 'assets/fonts/Semibold/OpenSans-Semibold.woff2');
 
   return arr;
 
