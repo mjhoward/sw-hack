@@ -48,6 +48,7 @@ function addAllFiles() {
 
 this.addEventListener('install', function(event) {
   console.log('Install event');
+
   var arr = addAllFiles();
   console.log(arr)
 
