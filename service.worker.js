@@ -8,8 +8,8 @@ this.addEventListener('install', function(event) {
     caches.open('v1')
       .then(function(cache) {
         return cache.addAll([
-          baseUrl,
-          baseUrl + 'index.html'
+          baseUrl/*,
+          baseUrl + 'index.html'*/
         ]);
       })
       .then(function() {
@@ -27,8 +27,9 @@ this.addEventListener('fetch', function(event) {
   var path = matcher[1];
   event.respondWith(
 
-        fetch(event.request).catch(function() {
+        fetch(event.request).then(function() {
              return caches.match(event.request);
+             
             // caches.match(event.request).then(function(response) {
             //   console.log('match', response);
             //   return response;
