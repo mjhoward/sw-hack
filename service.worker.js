@@ -1,5 +1,5 @@
 function addAllFiles() {
-  var isLocal = true;
+  var isLocal = false;
   var baseUrl = isLocal ? '/' : '/mjhoward/sw-hack/master/';
 
   var arr = [baseUrl, '/index.html']
