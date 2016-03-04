@@ -22,22 +22,20 @@ this.addEventListener('install', function(event) {
 });
 
 this.addEventListener('fetch', function(event) {
-  // var url = event.request.url;
-  // var matcher = url.match(/https?:\/\/.*\/(.*)/);
-  // var path = matcher[1];
-   var requestURL = new URL(event.request.url);
-
-  // Network, then cache, then fallback for home page
-  if(requestURL=='/')  {
-    event.respondWith(
-      fetch(event.request).then(function(r) {
-        console.log(r)
-        return caches.match(event.request);
-      }).catch(function() {
-        return caches.match('/page/content-not-available-offline');
+  console.log('Fetch event:', event.request.url);
+  var response;
+  event.respondWith(caches.match(event.request).catch(function() {
+    console.log('Not found in cache:');
+    return fetch(event.request);
+  }).then(function(r) {
+        repsonse = r;
+        caches.open('v1').then(function(cache) {
+          cache.put(event.request, response);
+        })
+        console.log('Found in cache:', r);
+        return repsonse.clone();        
       })
-    );
-  }
+  );
 });
 
 
