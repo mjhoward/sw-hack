@@ -2,7 +2,7 @@ function addAllFiles() {
   var isLocal = false;
   var baseUrl = isLocal ? '/' : '/mjhoward/sw-hack/master/';
 
-  var arr = [baseUrl, '/index.html']
+  var arr = [baseUrl, 'index.html']
 
   // for (var i = 1; i < 19; i ++) {
   //   (function(idx) {
@@ -12,12 +12,12 @@ function addAllFiles() {
   //   })(i);
   // }
 
-  for (var i = 1; i < 6; i ++) {
+ /* for (var i = 1; i < 6; i ++) {
     (function(idx) {
       var url =  baseUrl + 'figures/nfig00' + idx + '.jpg'
       arr.push(url)
     })(i);
-  }
+  }*/
 
   // for (var i = 1; i < 19; i ++) {
   //   (function(idx) {
