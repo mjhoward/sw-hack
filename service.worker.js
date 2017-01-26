@@ -61,15 +61,23 @@ function addAllFiles() {
 }
 
 
+var arr = [
+  '/',
+  '/index.html',
+  'assets/wol-common.css'
+];
+//var arr = addAllFiles();
+
 this.addEventListener('install', function(event) {
   console.log('Install event');
 
-  var arr = addAllFiles();
+  
   console.log(arr)
 
   event.waitUntil(
     caches.open('v1')
       .then(function(cache) {
+        console.log('Opened cache');
         return cache.addAll(arr);
         //return cache.addAll(['/mjhoward/sw-hack/master/index.html']);
       })
