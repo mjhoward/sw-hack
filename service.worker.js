@@ -2,7 +2,7 @@ function addAllFiles() {
   var isLocal = false;
   var baseUrl = isLocal ? '/' : '/mjhoward/sw-hack/master/';
 
-  var arr = [baseUrl, 'index.html']
+  var arr = [baseUrl + 'index.html']
 
   // for (var i = 1; i < 19; i ++) {
   //   (function(idx) {
@@ -50,10 +50,10 @@ function addAllFiles() {
   arr.push(baseUrl + 'assets/wiley-require-2.1.6.js');
   arr.push(baseUrl + 'assets/modernizr.custom.js');
 
-  arr.push(baseUrl + 'assets/open-sans.css');
+/*  arr.push(baseUrl + 'assets/open-sans.css');
   arr.push(baseUrl + 'assets/fonts/Italic/OpenSans-Italic.woff2');
   arr.push(baseUrl + 'assets/fonts/Regular/OpenSans-Regular.woff2');
-  arr.push(baseUrl + 'assets/fonts/Semibold/OpenSans-Semibold.woff2');
+  arr.push(baseUrl + 'assets/fonts/Semibold/OpenSans-Semibold.woff2');*/
 
   return arr;
 
