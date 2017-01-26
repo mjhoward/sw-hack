@@ -12,12 +12,12 @@ function addAllFiles() {
   //   })(i);
   // }
 
-  for (var i = 1; i < 6; i ++) {
+ /* for (var i = 1; i < 6; i ++) {
     (function(idx) {
       var url =  baseUrl + 'figures/nfig00' + idx + '.jpg'
       arr.push(url)
     })(i);
-  }
+  }*/
 
   // for (var i = 1; i < 19; i ++) {
   //   (function(idx) {
@@ -34,6 +34,7 @@ function addAllFiles() {
   //   })(i);
   // }
 
+  arr.push(baseUrl + 'index.html');
   arr.push(baseUrl + 'assets/footer-logo.png');
   arr.push(baseUrl + 'assets/header-logo.png');
   arr.push(baseUrl + 'assets/wol-article.css');
@@ -69,8 +70,8 @@ this.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('v1')
       .then(function(cache) {
-        //return cache.addAll(arr);
-        return cache.addAll(['/mjhoward/sw-hack/master/index.html']);
+        return cache.addAll(arr);
+        //return cache.addAll(['/mjhoward/sw-hack/master/index.html']);
       })
       .then(function() {
         console.log('All URLs cached');
