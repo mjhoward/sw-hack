@@ -69,8 +69,7 @@ this.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('v1')
       .then(function(cache) {
-        //return cache.addAll(arr);
-        return cache.addAll(['/mjhoward/sw-hack/master/index.html']);
+        return cache.addAll(arr);
       })
       .then(function() {
         console.log('All URLs cached');
