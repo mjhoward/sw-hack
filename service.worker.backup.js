@@ -59,22 +59,18 @@ function addAllFiles() {
 
 }
 
-var urlsToCache = [
-'/mjhoward/sw-hack/master/index.html',
-'/mjhoward/sw-hack/master/assets/wol-article.css'
-]
 
 this.addEventListener('install', function(event) {
   console.log('Install event');
 
   var arr = addAllFiles();
-  console.log(urlsToCache);
+  console.log(arr)
 
   event.waitUntil(
     caches.open('v1')
       .then(function(cache) {
         //return cache.addAll(arr);
-        return cache.addAll(urlsToCache);
+        return cache.addAll(['/mjhoward/sw-hack/master/index.html']);
       })
       .then(function() {
         console.log('All URLs cached');
